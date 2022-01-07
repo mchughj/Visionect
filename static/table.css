@@ -1,0 +1,113 @@
+body {
+  font-family: Courier;
+  font-size: 25px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  width: 100vw;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 34px;
+}
+
+tr:nth-child(odd) {
+  background: lightgray;
+}
+
+tr:first-child {
+  background: none;
+}
+
+th {
+  padding-right: 5px;
+  text-align: right;
+}
+
+th:first-child {
+  border-right: 1px solid #010101;
+}
+
+th:nth-child(2) {
+  padding-right: 20px;
+  border-right: 1px solid #010101;
+  border-bottom: 1px solid #010101;
+}
+
+th:nth-child(3) {
+  padding-right: 20px;
+  border-right: 1px solid #010101;
+  border-bottom: 1px solid #010101;
+}
+
+th:nth-child(4) {
+  padding-right: 40px;
+  border-bottom: 1px solid #010101;
+}
+
+td {
+  font-style: italic;
+  color: black;
+  border-top: 1px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 3px 5px 3px 40px;
+  text-align: right;
+}
+
+td:first-child {
+  border-color: #010101;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  background: white;
+  padding-right: 40px;
+}
+
+td:nth-child(2) {
+  padding-right: 20px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+td:nth-child(3) {
+  padding-right: 20px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+td:last-child {
+  padding-right: 40px;
+  border-color: #010101;
+  border-left: 1px solid
+  border-right: 1px solid
+  background: white;
+}
+
+tfoot td {
+  border-color: white;
+  font-weight: bold;
+}
+
+tfoot tr {
+  border-color: white;
+}
+
+tfoot td:last-child {
+  border-color: white;
+}
+
+tfoot td:first-child {
+  border-color: white;
+}
+
+tfoot td:nth-child(even) {
+  border-color: white;
+}
+tfoot td:nth-child(odd) {
+  border-color: white;
+}

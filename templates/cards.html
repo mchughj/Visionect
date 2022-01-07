@@ -1,0 +1,42 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/static/cards.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<table style="margin:50px auto 0; height: fit-content">
+    <tr>
+{% set count = 0 %}
+{% for i in p: %}
+    <td>
+     <div class="rcorners2">
+         <div class="ticker">{{ p[i]['ticker'] }}</div>
+         <span class="price"> {{ p[i]['sclose'] }}</span>
+     {% if p[i]['pchange'] > 0 %}
+         <span class="arrow up"></span>
+     {% elif p[i]['pchange'] == 0 %}
+         <b class="flat">~</b>
+     {% else %}
+         <span class="arrow down"></span>
+     {% endif %}
+         <span class="pchange"> {{ p[i]['spchange'] }}</span>
+         <hr class="grayline"></hr>
+         <div class="value"> {{ p[i]['svalue'] }}</div>
+         <div class="summary"> {{ p[i]['syearpchange'] }} / {{ p[i]['salltimepchange'] }}</div>
+      </div>
+    </td>
+ {% if loop.index is divisibleby 5 %}
+    </tr>
+    <tr>
+ {% endif %}
+{% endfor %}
+</tr>
+</table>
+
+</body>

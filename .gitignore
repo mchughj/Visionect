@@ -1,0 +1,5 @@
+.env
+equities.py
+__pycache__
+env/
+*.pyc

@@ -1,0 +1,41 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/static/table.css">
+</head>
+<body>
+
+<div class="container">
+  <table>
+    <tr>
+      <th></th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+
+    {% for i in p: %}
+    <tr>
+        <td>{{ p[i]['ticker'] }}</td>
+        <td>{{ p[i]['quantity'] }}</td>
+        <td>{{ p[i]['sclose'] }}</td>
+        <td>{{ p[i]['svalue'] }}</td>
+    </tr>
+    {% endfor %}
+    
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ total }}</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+</body>

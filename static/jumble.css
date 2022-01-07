@@ -1,0 +1,20 @@
+body {
+  font-family: 'PT Serif', serif;
+  font-size: 25px;
+}
+
+.rcorners2 {
+  margin: 15px; 
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 15px; 
+  width: 75px;
+  height: 75px;  
+}
+
+.letter {
+  font-size: 45px;
+  height: 70px;
+  text-align: center;
+}
+

@@ -1,0 +1,87 @@
+body {
+  font-family: 'PT Serif', serif;
+  font-size: 25px;
+}
+
+.rcorners2 {
+  margin: 15px; 
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 15px; 
+  width: 250px;
+  height: 175px;  
+}
+
+.ticker {
+  font-size: 35px;
+  height: 55px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.price {
+  position: relative;
+  font-size: 30px;
+  width: 165px;
+  border-radius: 5px;
+  float: left;
+}
+
+.pchange {
+  font-size: 20px;
+  height: 20px;
+  width: 100px;
+  border-radius: 15px;
+  text-align: right;
+}
+
+.summary {
+  font-size: 20px;
+  height: 20px;
+  width: 200px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.ticker {
+  font-size: 40px;
+  height: 55px;
+  border-radius: 25px;
+  text-align: center;
+}
+.value {
+  font-size: 35px;
+  height: 45px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+hr.grayline {
+  clear: both;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  margin-left: 10px;
+  margin-right: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.flat {
+  font-size: 30px;
+}
+
