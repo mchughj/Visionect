@@ -38,19 +38,19 @@ In the below if your default 'python' is python3 then change the below commands 
 1. Change your device to connect directly to your new server process.  Do this using the Visionect configurator.  https://docs.visionect.com/DeviceConfiguration/UsingVisionectConfigurator.html
 1. Create a .env file in the root directory of the project.  It should look something like this:
    ```
-VisionectServer=http://localhost:8081/
-VisionectApiKey=9fbcffffff1f724d5f
-VisionectApiSecret=[Whatever]
-VisionectUUID=[Your UUID]
+   VisionectServer=http://localhost:8081/
+   VisionectApiKey=9fbcffffff1f724d5f
+   VisionectApiSecret=[Whatever]
+   VisionectUUID=[Your UUID]
    ```
-The visionect UUID can be found in the configurator.  Alternatively, once you hook up the device to your server then the server shows your device and its UUID.
+   The visionect UUID can be found in the configurator.  Alternatively, once you hook up the device to your server then the server shows your device and its UUID.
 1. Finally, start the server process here
    ```
    python3 app.py
    ```
    Do not run the flask webserver using the flask executable - this won't pick up the necessary dependencies and you will be forced to install the requirements outside of the virtual env as well as inside of it.
 
-== Using the server ==
+## Using the server
 
 The server process uses yfinance to gather financial information for some of the default views.  See https://github.com/ranaroussi/yfinance for details.
 
