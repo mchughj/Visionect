@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% block head %}
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+    <link rel="stylesheet" href="/static/base.css">
+</head>
+<body>
+
+<div class="GeneralInfo">
+<table style="margin:2px 0 10px; height: fit-content; width: 100%">
+    <tr><td>
+        <div class="device-time">Time: <span id="TIME"></span></div>
+        </td><td align="right">
+        <div class="device-data">Battery: <span id="BATT"></span></div>
+        </td>
+    </tr>
+</table>
+</div>
+    {% block content %}{% endblock %}
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+var getDeviceTelemetry = function () 
+{
+    var s = okular.DevicesStatus()[okular.session_uuid]
+    if (typeof(okular)!=="undefined") {
+        $("#BATT").text(okular.BatteryLevel);
+    } else {
+        $("#BATT").text("unsupported");
+    }
+}
+ 
+function convertUTCDateToLocalDate(d) {
+   var offset = -8;
+   var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+   var nd = new Date(utc + (3600000*offset));
+   return nd;
+}
+
+function setDate() {
+  const now = convertUTCDateToLocalDate(new Date())
+
+  const hour = now.getHours();
+  const mins = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  var s = hour + ":";
+  if (mins < 10) { 
+     s += "0" + mins + ":";
+  } else { 
+     s += mins + ":";
+  }
+  if (seconds < 10) { 
+     s += "0" + seconds;
+  } else { 
+     s += seconds;
+  }
+
+  $("#TIME").text(s);
+}
+
+setDate()
+getDeviceTelemetry()
+  </script>
+
+</body>
+</html>

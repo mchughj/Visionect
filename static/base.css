@@ -1,0 +1,15 @@
+.GeneralInfo {
+    top:0;
+    left:0;
+    width: 100%;
+    height: 35px;
+}
+
+.device-time {
+    font-size: 25px;
+}
+
+.device-data {
+    font-size: 25px;
+}
+

@@ -9,7 +9,7 @@ body {
   border: 2px solid black;
   padding: 15px; 
   width: 250px;
-  height: 175px;  
+  height: 185px;  
 }
 
 .ticker {
@@ -70,15 +70,13 @@ hr.grayline {
 }
 
 .up {
-  margin-left: 10px;
-  margin-right: 10px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
 
 .down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
+  transform: translate(0,-4px) rotate(45deg);
+  -webkit-transform: translate(0,-4px) rotate(45deg);
 }
 
 .flat {

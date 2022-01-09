@@ -1,15 +1,14 @@
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
     <link rel="stylesheet" href="/static/cards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-</head>
-<body>
+{% endblock %}
 
+{% block content %}
 <table style="margin:50px auto 0; height: fit-content">
     <tr>
 {% set count = 0 %}
@@ -21,7 +20,6 @@
      {% if p[i]['pchange'] > 0 %}
          <span class="arrow up"></span>
      {% elif p[i]['pchange'] == 0 %}
-         <b class="flat">~</b>
      {% else %}
          <span class="arrow down"></span>
      {% endif %}
@@ -38,5 +36,4 @@
 {% endfor %}
 </tr>
 </table>
-
-</body>
+{% endblock %}

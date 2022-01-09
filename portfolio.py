@@ -14,11 +14,15 @@ For now just using a dummy value!!
     stocks = {
             'AMZN': { 
                 'quantity': 30,
-                'oPrice': 262.32,
+                'est_purchaseprice': 262.32,
+                'expenseratio': 0,
+                'costbasis': 7869.6,
                 },
-            'FB': {
-                'quantity': 3000,
-                'oPrice': 165.78,
+            'QQQ': {
+                'quantity': 50,
+                'est_purchaseprice': 171.47,
+                'expenseratio': 0.2,
+                'costbasis': 146441.13,
                 },
             }
     
@@ -63,7 +67,7 @@ def getPortfolio():
         openPrice = getPriorLastCloseValue(d[s]['Close'])
         closePrice = getLastCloseValue(d[s]['Close'])
         yearOpenPrice = d[s]['Open'].values[0]
-        costBasis = stocks[s]['oPrice']
+        costBasis = stocks[s]['costbasis']
         value = stocks[s]['quantity'] * closePrice
 
         e = dict()
@@ -79,7 +83,7 @@ def getPortfolio():
         e["spchange"] = "{:0.2f}%".format(e["pchange"])
         e["costbasis"] = costBasis
         e["scostbasis"] = "${:,.2f}".format(costBasis)
-        e["alltimepchange"] = ((closePrice - costBasis) / costBasis ) * 100
+        e["alltimepchange"] = ((value - costBasis) / costBasis ) * 100
         e["salltimepchange"] = "{:0.2f}%".format(e["alltimepchange"])
         e["yearpchange"] = ((closePrice - yearOpenPrice) / yearOpenPrice ) * 100
         e["syearpchange"] = "{:0.2f}%".format(e["yearpchange"])

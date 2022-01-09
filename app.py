@@ -6,6 +6,7 @@ from dotenv import dotenv_values
 import os
 import random
 import sys
+import requests
 
 import portfolio
 
@@ -51,15 +52,36 @@ def cards():
     smaller = { key: value for key, value in pf.items()}
     return render_template("cards.html", p=smaller, total="${:,.2f}".format(total) )
 
+@app.route('/quote')
+def quote():
+    resp = requests.get(url="https://zenquotes.io/api/quotes")    
+    if resp:
+        data = resp.json()
+        data = list(filter(lambda x : "Proverb" not in x['a'], data))
+        which = random.choice(data)
+    else:
+        print(f"Got a bad response: {resp}, data: {resp.data}")
+        which = { "q": "An apple a day", "a": "Some lameo" }
+
+    return render_template("quote.html", quote=which['q'], author=which['a'])
+
+
 @app.route('/jumble')
 def jumble():
-    numberWords = 5
+    # Read in my words file.  This assumes that each line has its own word.
+    # Then group the words based on 'difficulty'.  I'm simply using the length
+    # of the word as a metric here although more complicated ones are clearly
+    # possible.
+    lines = open('common_words.txt').read().splitlines()
+    smallWords = list(filter(lambda x : len(x)==4, lines))
+    mediumWords = list(filter(lambda x : len(x)==5, lines))
+    longWords = list(filter(lambda x : len(x)==6, lines))
+    longLongWords = list(filter(lambda x : len(x)==7, lines))
 
-    # Choose random words from the file /usr/share/dict/american-english
-    lines = open('/usr/share/dict/american-english').read().splitlines()
-    lines = list(filter(lambda x : "'" not in x and len(x)>3 and len(x)<=7 and "é" not in x and 'Å' not in x and 'ö' not in x, lines))
-
-    words = random.choices(lines, k=numberWords)
+    words = random.choices(smallWords, k=1)
+    words.extend(random.choices(mediumWords, k=2))
+    words.extend(random.choices(longWords, k=2))
+    words.extend(random.choices(longLongWords, k=1))
 
     shuffledWords = []
     for w in words:
@@ -107,10 +129,6 @@ def helloWorld():
 @app.route('/clock')
 def index():
     return render_template("clock.html")
-
-@app.route('/foo')
-def foo():
-    return "Test!"
 
 @app.route('/push/<p>')
 def push(p):

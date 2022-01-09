@@ -1,0 +1,26 @@
+body {
+  font-family: 'PT Serif', serif;
+  font-size: 25px;
+}
+
+div.quote-container {
+  padding-top: 2em;
+  margin-top: 70px;
+}
+
+div.quote {
+  margin: 15px; 
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 15px; 
+  font-size: 50px;
+  font-style: italic;
+}
+
+div.author {
+  font-size: 35px;
+  height: 70px;
+  padding: 10px 30px;
+  text-align: right;
+}
+

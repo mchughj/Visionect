@@ -12,8 +12,6 @@ In the below if your default 'python' is python3 then change the below commands 
    sudo apt install -y python3
    python3 -m pip install --user --upgrade pip
    python3 -m pip install --user virtualenv
-   
-   sudo apt-get install -y wamerican
    ```
 1. Run the Visionect server process locally.  There is a bunch of confusing installation instructions but there is a super simple one where you installer docker and then docker compose and run a single command that works very well.  Instructions can be found https://support.getjoan.com/hc/en-us/articles/360008822260-How-to-install-the-Visionect-Software-Suite-without-the-VM.  
 1. Go to the Visionect server and generate an API Key and Secret.  If you followed the prior instruction then go to http://localhost:8081/ click on 'Users' on the left and then 'Add  new API Key' at the bottom.  

@@ -3,17 +3,17 @@ body {
   font-size: 25px;
 }
 
-.rcorners2 {
+.rcorners {
   margin: 15px; 
   border-radius: 20px;
   border: 2px solid black;
   padding: 15px; 
-  width: 75px;
-  height: 75px;  
+  width: 100px;
+  height: 100px;  
 }
 
 .letter {
-  font-size: 45px;
+  font-size: 65px;
   height: 70px;
   text-align: center;
 }
