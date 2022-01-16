@@ -3,3 +3,4 @@ requests-toolbelt==0.9.1
 yfinance
 flask
 python-dotenv
+bs4

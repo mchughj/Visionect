@@ -9,5 +9,24 @@
 <div class="quote-container">
 <div class="quote">{{ quote }}</div>
 <div class="author">~ {{ author }}</div>
+{% if authorInfo is not none %}
+<div class="authorInfo">{{ authorInfo|safe }}</div>
+{% endif %}
+<table class="infobox vcard">
+    <tbody>
+{% if face is not none %}
+        <tr><td colspan="3" style="text-align:center"><img src="{{ face|safe }}"/></td></tr>
+{% endif %}
+{% if born is not none %}
+        <tr><th scope="row" class="infobox-label" style="line-height:1.2em; padding-right:0.65em;">Born</th><td class="infobox-data" style="line-height:1.4em;">{{ born|safe }}</td></tr>
+{% endif %}
+{% if died is not none %}
+        <tr><th scope="row" class="infobox-label" style="line-height:1.2em; padding-right:0.65em;">Died</th><td class="infobox-data" style="line-height:1.4em;">{{ died|safe }}</td></tr>
+{% endif %}
+{% if occupation is not none %}
+        <tr><th scope="row" class="infobox-label" style="line-height:1.2em; padding-right:0.65em;">Occupation</th><td class="infobox-data role" style="line-height:1.4em;">{{ occupation|safe }}</td></tr>
+{% endif %}
+    </tbody>
+</table>
 </div>
 {% endblock %}
