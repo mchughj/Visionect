@@ -11,6 +11,7 @@ import re
 from bs4 import BeautifulSoup
 
 import portfolio
+import countries
 
 app = Flask(__name__)
 
@@ -124,7 +125,8 @@ def filterEntries(entries, toBeRemoved):
     for e in entries:
         keep = True
         for r in toBeRemoved:
-            if r in e['text']:
+            r = r.lower()
+            if r in e['text'].lower():
                 keep = False
         if keep:
             result.append(e)
@@ -137,7 +139,6 @@ def augmentEntry(entries, key, fn):
 def extractBirthYear(x):
    reg = re.compile('\(b[ c.]*([0-9][0-9]*)\)')
    result = reg.search(x['text'])
-   print (f"Looking at {x['text']}")
    if result and result.group(1) != None: 
        return int(result.group(1))
    else:
@@ -158,18 +159,24 @@ def day(m,d):
         return render_template("today.html")
 
     print(f"Got back a response;  url: {url}")
+
     data = resp.json()
     eventResults = data['data']['Events']
     deathResults = data['data']['Deaths']
     birthResults = data['data']['Births']
 
-    # Some things just don't interest me.
-    thingsIdontCareAbout = ["football", "baseball", "Chinese", "Kosovo", "Spanish"]
+    print( f"Prior to all filters; birthResults: {len(birthResults)}, deathResults: {len(deathResults)}")
+    birthResults = filterEntries(birthResults, countries.countriesIDontCareAbout)
+    deathResults = filterEntries(deathResults, countries.countriesIDontCareAbout)
+
+    # Some things just don't interest me.  I yes, I'm a horrible American.
+    thingsIdontCareAbout = ["football", "baseball", "greek", "french", "canadian", "ukrainian", "german", "belgian", "Swedish", "Scottish", "Malayalam", "English", 
+            "Dutch"]
+
     birthResults = filterEntries(birthResults, thingsIdontCareAbout)
     deathResults = filterEntries(deathResults, thingsIdontCareAbout)
 
-    print( f"After filter, all birthResults results; len: {len(birthResults)}")
-    print( f"After filter, all deathResults results; len: {len(deathResults)}")
+    print( f"After filtering out things I don't care about; birthResults: {len(birthResults)}, deathResults: {len(deathResults)}")
 
     # Find all birthResults that are near my birthday
     augmentEntry(birthResults, "year", lambda x: int(re.sub('&#8211;.*', '', x['text'])))
