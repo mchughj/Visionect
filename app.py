@@ -7,7 +7,6 @@ import os
 import random
 import sys
 import requests
-import re
 
 import portfolio
 import today

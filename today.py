@@ -17,9 +17,12 @@ def filterEntries(entries, toBeRemoved):
             result.append(e)
     return result
 
-def augmentEntry(entries, key, fn):
+def augmentEntry(entries, key, fn, errorFn = lambda: 1000 ):
     for e in entries:
-        e[key] = fn(e)
+        try:
+            e[key] = fn(e)
+        except:
+            e[key] = errorFn()
 
 def extractBirthYear(x):
    reg = re.compile('\(b[ c.]*([0-9][0-9]*)\)')
@@ -59,8 +62,14 @@ def day(m,d):
     # Some things just don't interest me.
     thingsIdontCareAbout = ["football", "baseball", "greek", "french", "canadian",
             "ukrainian", "german", "belgian", "Swedish", "Scottish", "Malayalam", "English",
-            "Norwegian",
-            "Dutch"]
+            "Norwegian", "Dutch", "Finnish", "Turkish",
+            "Palestinian", "Spanish", "Mexican", 
+            "Italian", "Kosovo", "Welsh", "Czech", "Swiss", 
+            "British", "Filipino", "Taiwanese", "Portuguese",
+            "Danish", "Bishop of" 
+
+
+            ]
 
     birthResults = filterEntries(birthResults, thingsIdontCareAbout)
     deathResults = filterEntries(deathResults, thingsIdontCareAbout)
@@ -78,7 +87,7 @@ def day(m,d):
         print( f"  Year: {e['year']}, differenceYear: {e['differenceYear']}, text: {e['text']}")
 
     # Find all deathResults where the person was born near my year. 
-    augmentEntry(deathResults, "year", lambda x: int(re.sub('&#8211;.*', '', x['text'])))
+    augmentEntry(deathResults, "year", lambda x: int(re.sub('&#8211;.*', '', x['text']), lambda: 10000))
     augmentEntry(deathResults, "bornYear", extractBirthYear)
     augmentEntry(deathResults, "differenceYear", lambda x: abs(1973-x['bornYear']))
     deathResults = sorted(deathResults, key=lambda x: int(x['differenceYear']))
