@@ -5,19 +5,27 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
+def authorsThatICareAbout(author):
+    if "Proverb" in author:
+        return False
+    if "Bodhidharma" == author:
+        return False
+    if "Lolly Daskal" == author:
+        return False
+    return True
+
 def findInfobox(soup, classesToLookFor):
     for c in classesToLookFor:
         i = soup.findAll("table", {"class":c})
         if len(i) == 1:
             return i[0]
-
     return None
 
 def page():
     resp = requests.get(url="https://zenquotes.io/api/quotes")    
     if resp:
         data = resp.json()
-        data = list(filter(lambda x : "Proverb" not in x['a'], data))
+        data = list(filter(lambda x : authorsThatICareAbout(x['a']), data))
         which = random.choice(data)
     else:
         print(f"Got a bad response: {resp}, data: {resp.data}")
