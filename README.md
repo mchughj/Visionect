@@ -1,4 +1,4 @@
-
+sudo service docker start
 # Visionect 
 
 Looking at displaying some fun things on my Visionect eInk display.
@@ -13,8 +13,8 @@ In the below if your default 'python' is python3 then change the below commands 
    python3 -m pip install --user --upgrade pip
    python3 -m pip install --user virtualenv
    ```
-1. Run the Visionect server process locally.  There is a bunch of confusing installation instructions but there is a super simple one where you installer docker and then docker compose and run a single command that works very well.  Instructions can be found https://support.getjoan.com/hc/en-us/articles/360008822260-How-to-install-the-Visionect-Software-Suite-without-the-VM.  
-1. Go to the Visionect server and generate an API Key and Secret.  If you followed the prior instruction then go to http://localhost:8081/ click on 'Users' on the left and then 'Add  new API Key' at the bottom.  
+1. Run the Visionect server process locally.  There is a bunch of confusing installation instructions but there is a super simple one where you installer docker and then docker compose and run a single command that works very well.  Instructions can be found https://support.getjoan.com/hc/en-us/articles/360008822260-How-to-install-the-Visionect-Software-Suite-without-the-VM.  It boils down to the following: sudo service docker start && sudo docker-compose pull && sudo docker-compose up -d 
+1. Go to the Visionect server and generate an API Key and Secret.  If you followed the prior instruction then go to http://localhost:8081/ click on 'Users' on the left and then 'Add new API Key' at the bottom.  If this is the first time you have visited the Visionect Web interface then the default username is 'admin' and password 'admin123'.  You should change it and then place it into your .env file along with the API key that you will generate.
 1. Change your device to connect directly to your new server process.  Do this using the Visionect configurator.  https://docs.visionect.com/DeviceConfiguration/UsingVisionectConfigurator.html
 1. Create a new virtual environment within the same directory as the git checkout.
    ```
